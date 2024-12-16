@@ -1,5 +1,6 @@
 
 import { set, get, isObject } from 'lodash'
+import { Log } from './Log'
 
 export const ROOT_KEY = '__i18n_ally_root__'
 
@@ -48,7 +49,7 @@ export function unflatten(data: any) {
       else if (original === undefined)
         set(output, key, data[key])
       else
-        throw new Error(`Duplicated key ${key} found`)
+        Log.warn(`Duplicated key ${key} found`, true)
     })
 
   return output
